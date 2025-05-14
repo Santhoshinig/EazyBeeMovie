@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.3s ease-out;
+}
+
+@layer base {
+  :root {
+    --background: 240 3% 6%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 3% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 3% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 45 100% 69%;
+    --primary-foreground: 240 3% 6%;
+
+    --secondary: 240 3% 12%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 3% 20%;
+    --muted-foreground: 240 5% 84%;
+
+    --accent: 45 100% 69%;
+    --accent-foreground: 240 3% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3% 18%;
+    --input: 240 3% 18%;
+    --ring: 45 100% 69%;
+
+    --radius: 0.5rem;
+
+    --eazybee-yellow: #FFDA63;
+    --eazybee-dark: #0E0E10;
+    --eazybee-dark-accent: #161618;
+  }
+
+  * {
+    @apply border-0;
+  }
+
+  body {
+    @apply bg-eazybee-dark text-foreground antialiased border-0;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-1.5;
+  }
+
+  /* Custom scrollbar for genre filters */
+  .overflow-x-auto::-webkit-scrollbar {
+    @apply h-1;
+  }
+
+  .overflow-x-auto::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    @apply bg-muted/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-eazybee-dark-accent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-eazybee-yellow;
+  }
+
+  /* Hide scrollbar for mobile */
+  @media (max-width: 768px) {
+    .scrollbar-none {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .responsive-text {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+}
+
+@layer components {
+  .title-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-eazybee-yellow to-yellow-400;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-102 hover:shadow-xl hover:shadow-eazybee-yellow/20;
+  }
+
+  .nav-link {
+    @apply relative px-2 py-1 text-white hover:text-eazybee-yellow transition-colors duration-200 font-medium;
+  }
+
+  .nav-link.active {
+    @apply text-eazybee-yellow;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-full h-0.5 bg-eazybee-yellow rounded-full;
+  }
+
+  .btn-primary {
+
+/* Media grid responsive styles */
+.media-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+@media (min-width: 640px) {
+  .media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* Genre tabs styling */
+.genre-tabs {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.genre-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+    @apply bg-eazybee-yellow hover:bg-yellow-400 text-black font-medium rounded-md px-4 py-2 transition-colors duration-200 flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-white/20 hover:border-eazybee-yellow text-white hover:text-eazybee-yellow font-medium rounded-md px-4 py-2 transition-colors duration-200 flex items-center justify-center gap-2;
+  }
+
+  .category-badge {
+    @apply bg-eazybee-dark-accent text-xs font-medium px-2 py-0.5 rounded-md text-white/80;
+  }
+
+  .pt-responsive {
+    @apply pt-24 md:pt-28;
+  }
+
+  .container-responsive {
+    @apply px-3 sm:px-4 md:px-6 lg:px-8;
+  }
+
+  .media-card-hover {
+    @apply hover:scale-105 transition-transform duration-200;
+  }
+
+  .search-bar {
+    @apply relative flex items-center;
+  }
+
+  .search-bar input {
+    @apply bg-eazybee-dark-accent border-none focus:ring-eazybee-yellow/50 rounded-md;
+  }
+}
+
+@layer utilities {
+  .scale-102 {
+    transform: scale(1.02);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.admin-content {
+  @apply pt-6 px-4 md:px-6;
+}
